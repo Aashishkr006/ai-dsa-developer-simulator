@@ -3,7 +3,7 @@ package arrays;
 public class TicketKiosk {
     public static int minCoinsGreedy(int amount) {
         // Array of denominations in descending order
-        int[] denominations = {100, 25, 10, 5, 1};
+        int[] denominations = {1, 5, 10, 25, 100};
         int totalCoins = 0;
 
         for (int coin : denominations) {
