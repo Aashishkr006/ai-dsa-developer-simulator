@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@google/genai": "^2.22.0",
+    "@octokit/rest": "^22.0.1",
+    "@openrouter/sdk": "^1.2.120",
+    "dotenv": "^17.4.2",
+    "groq-sdk": "^1.6.0"
+  }
+}
