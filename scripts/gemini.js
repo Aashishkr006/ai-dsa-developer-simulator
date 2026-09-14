@@ -1,6 +1,6 @@
 const { GoogleGenAI } = require("@google/genai");
 
-async function generateWithGemini(prompt) {
+async function generateWithGemini(prompt, problemSchema = null) {
     console.log("Trying Gemini...");
 
     if (!process.env.GEMINI_API_KEY) {
@@ -11,12 +11,28 @@ async function generateWithGemini(prompt) {
         apiKey: process.env.GEMINI_API_KEY
     });
 
-    const response = await ai.interactions.create({
+    const request = {
         model: "gemini-3.8-flash",
         input: prompt
-    });
+    };
 
-    return response.output_text;
+    if (problemSchema) {
+        request.response_format = {
+            type: "text",
+            mime_type: "application/json",
+            schema: problemSchema
+        };
+    }
+
+    const response = await ai.interactions.create(request);
+
+    const text = response.output_text;
+
+    if (problemSchema) {
+        return JSON.parse(text);
+    }
+
+    return text;
 }
 
 module.exports = {
