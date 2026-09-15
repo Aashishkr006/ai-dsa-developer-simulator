@@ -414,25 +414,25 @@ Solve this problem in Java.
 
 async function createGitHubIssue(problem) {
 
+    const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
+
     const response =
         await octokit.rest.issues.create({
 
-            owner: process.env.GITHUB_OWNER,
+            owner,
 
-            repo: process.env.GITHUB_REPO,
+            repo,
 
             title:
-                `DSA Daily ΓÇö ${problem.problemName}`,
+                `DSA Daily — ${problem.problemName}`,
 
             body:
                 createIssueBody(problem)
 
         });
 
-
     return response.data;
 }
-
 
 // ========================================
 // UPDATE NOTION STATUS
