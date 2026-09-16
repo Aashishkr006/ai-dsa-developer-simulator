@@ -1,6 +1,10 @@
 name: Daily DSA Generator
 
 on:
+  push:
+    branches:
+      - main
+
   schedule:
     - cron: '*/10 * * * *'
 
