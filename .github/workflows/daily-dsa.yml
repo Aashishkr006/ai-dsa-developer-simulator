@@ -2,7 +2,7 @@ name: Daily DSA Generator
 
 on:
   schedule:
-    - cron: '30 3 * * *'
+    - cron: '0 6 * * *'
 
   workflow_dispatch:
 
